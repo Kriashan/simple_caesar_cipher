@@ -65,21 +65,22 @@ def ask_user_question(ask='', re_filter='', expected_type='str'):
 
 #review time: 1667968082.8530009
 def cipher():
-    letters = list(string.ascii_letters + string.digits + ' ' + string.punctuation)
+    letters = list(string.ascii_letters + string.digits + string.punctuation + '')
     print(letters)
 
     encode = input("Enter your string to encode: ")
-    key = ''.join(re.findall('[0-9-]', input("How much do you want to shift this by: ")))
+    key = ''.join(re.findall('[0-9-]', input("How much do you want to shift this by can be a positive or negative integer: ")))
     while key.__contains__('--'):
         key = key.replace('--', '-')
     key = int(key)
     new_string = []
 
     for letter in encode:
-        print((letters.index(letter) + key) % len(letters))
+        #print((letters.index(letter) + key) % len(letters))
         new_string.append(letters[(letters.index(letter) + key) % len(letters)])
 
-    print(new_string)
+    #print(new_string)
+    stdout('Output: ' + ''.join(new_string))
 
 # Adds \n and uses the faster version of print
 #review time: 1668091889.6146588
